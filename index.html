@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mihai-Emilian Niculae Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Latin+Modern+Roman:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Global styles */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: 'Latin Modern Roman', serif;
+            color: #FFFFFF;
+            background-color: #000000;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 0;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        header {
+            background: #000000;
+            box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #FFFFFF;
+            transition: background 0.3s ease;
+        }
+
+        header h1 {
+            font-family: 'Latin Modern Roman', serif;
+            font-weight: 700;
+            color: #FFFFFF;
+            display: inline-block;
+            padding: 10px 20px;
+            transition: transform 0.3s;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+        }
+
+        header h1:hover {
+            transform: scale(1.1);
+        }
+
+        nav {
+            float: right;
+            margin-top: 10px;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            align-items: center;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-weight: 400;
+            transition: color 0.3s, transform 0.3s;
+            position: relative;
+            font-family: 'Latin Modern Roman', serif;
+        }
+
+        nav ul li a:after {
+            content: '';
+            display: block;
+            width: 0%;
+            height: 2px;
+            background: #FFFFFF;
+            transition: width 0.3s;
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+        }
+
+        nav ul li a:hover {
+            color: #FFFFFF;
+            transform: translateY(-2px);
+        }
+
+        nav ul li a:hover:after {
+            width: 100%;
+        }
+
+        main {
+            margin-top: 100px;
+        }
+
+        section {
+            display: none;
+            padding: 100px 0;
+            position: relative;
+            transition: transform 0.8s ease, opacity 0.8s ease;
+        }
+
+        .active {
+            display: block;
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        h2 {
+            font-family: 'Latin Modern Roman', serif;
+            font-weight: 700;
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            color: #FFFFFF;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: color 0.3s;
+            text-shadow: 0 0 15px #FFFFFF;
+        }
+
+        h2:hover {
+            color: #FFFFFF;
+        }
+
+        p {
+            font-size: 1.2em;
+            line-height: 1.8;
+            color: #FFFFFF;
+            max-width: 800px;
+            margin: 20px auto;
+            transition: transform 0.3s;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+        }
+
+        p:hover {
+            transform: scale(1.05);
+        }
+
+        footer {
+            background-color: #000000;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9rem;
+            border-top: 1px solid #FFFFFF;
+            box-shadow: 0 -2px 4px rgba(255, 255, 255, 0.1);
+            transition: background 0.3s ease;
+        }
+
+        footer:hover {
+            background-color: #1A1A1A;
+        }
+
+        ul {
+            padding: 0;
+            list-style: none;
+            margin: 20px auto;
+            max-width: 800px;
+        }
+
+        ul li {
+            padding: 10px 0;
+            transition: transform 0.3s;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        ul li:hover {
+            transform: translateX(10px);
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 0;
+            list-style: none;
+            overflow: hidden;
+        }
+
+        .timeline-item {
+            padding: 20px 0;
+            position: relative;
+            margin-bottom: 40px;
+            border-bottom: 2px solid #FFFFFF;
+        }
+
+        .timeline-date {
+            position: absolute;
+            width: 120px;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            color: #FFFFFF;
+            font-weight: bold;
+            background: #1A1A1A;
+            border-radius: 5px;
+            padding: 5px 10px;
+            z-index: 1;
+            text-shadow: 0 0 5px #FFFFFF;
+        }
+
+        .timeline-content {
+            background: #1A1A1A;
+            color: #FFFFFF;
+            padding: 20px;
+            border-radius: 6px;
+            position: relative;
+            width: 80%;
+            margin: 20px auto;
+            z-index: 2;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            left: 0;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            left: 10%;
+        }
+
+        .timeline-content h3 {
+            margin-top: 0;
+            color: #FFFFFF;
+            text-shadow: 0 0 10px #FFFFFF;
+        }
+
+        .timeline-content p {
+            margin: 0;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+
+        @media screen and (max-width: 768px) {
+            .timeline-content {
+                width: 90%;
+                left: 0;
+            }
+
+            .timeline-date {
+                position: static;
+                transform: none;
+                margin-bottom: 10px;
+            }
+        }
+
+        .song-list {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 0;
+            list-style: none;
+        }
+
+        .song-list li {
+            padding: 10px 0;
+            transition: transform 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FFFFFF;
+        }
+
+        .song-list li:hover {
+            transform: translateX(10px);
+        }
+
+        .song-list a {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-weight: 400;
+            margin-left: 10px;
+            transition: color 0.3s;
+        }
+
+        .song-list a:hover {
+            color: #FFFFFF;
+        }
+
+        .song-list i {
+            margin-left: 5px;
+        }
+
+        .infinity-container {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto 20px;
+            animation: rotateInfinity 10s infinite linear;
+        }
+
+        .infinity {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .loop {
+            position: absolute;
+            width: 75px;
+            height: 75px;
+            border: 6px solid #FFFFFF;
+            border-radius: 50%;
+            top: 25%;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+        }
+
+        .loop.left {
+            left: 0;
+            transform: rotate(45deg);
+            border-right: none;
+            border-top: none;
+        }
+
+        .loop.right {
+            right: 0;
+            transform: rotate(-45deg);
+            border-left: none;
+            border-bottom: none;
+        }
+
+        @keyframes rotateInfinity {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .background-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .symbol {
+            position: absolute;
+            color: rgba(255, 255, 255, 0.2);
+            font-size: 24px;
+            animation: floatSymbols 20s infinite linear;
+            user-select: none;
+            pointer-events: none;
+            text-shadow: 0 0 10px #FFFFFF;
+        }
+
+        @keyframes floatSymbols {
+            from {
+                transform: translateY(100vh) rotate(0deg);
+            }
+            to {
+                transform: translateY(-100vh) rotate(360deg);
+            }
+        }
+
+        .contact-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .contact-icons a {
+            color: #FFFFFF;
+            font-size: 2.5rem;
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+
+        .contact-icons a:hover {
+            color: #FFFFFF;
+            transform: scale(1.2);
+            text-shadow: 0 0 15px #FFFFFF;
+        }
+
+        .contact-icons a:before {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 2px;
+            background: #FFFFFF;
+            margin-bottom: 10px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .contact-icons a:hover:before {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-animation">
+        <div class="symbol" style="top: 0%; left: 20%; font-size: 30px;">0</div>
+        <div class="symbol" style="top: 10%; left: 60%; font-size: 28px;">∫</div>
+        <div class="symbol" style="top: 20%; left: 80%; font-size: 26px;">1</div>
+        <div class="symbol" style="top: 30%; left: 40%; font-size: 32px;">2</div>
+        <div class="symbol" style="top: 40%; left: 70%; font-size: 34px;">∮</div>
+        <div class="symbol" style="top: 50%; left: 50%; font-size: 30px;">3</div>
+        <div class="symbol" style="top: 60%; left: 30%; font-size: 32px;">∬</div>
+        <div class="symbol" style="top: 70%; left: 90%; font-size: 28px;">4</div>
+        <div class="symbol" style="top: 80%; left: 10%; font-size: 26px;">∭</div>
+        <div class="symbol" style="top: 90%; left: 25%; font-size: 24px;">∰</div>
+        <div class="symbol" style="top: 15%; left: 35%; font-size: 30px;">5</div>
+        <div class="symbol" style="top: 25%; left: 45%; font-size: 28px;">∂</div>
+        <div class="symbol" style="top: 35%; left: 75%; font-size: 26px;">6</div>
+        <div class="symbol" style="top: 45%; left: 15%; font-size: 32px;">7</div>
+        <div class="symbol" style="top: 55%; left: 85%; font-size: 34px;">∇</div>
+        <div class="symbol" style="top: 65%; left: 5%; font-size: 30px;">8</div>
+        <div class="symbol" style="top: 75%; left: 55%; font-size: 32px;">9</div>
+        <div class="symbol" style="top: 85%; left: 75%; font-size: 28px;">∫</div>
+        <div class="symbol" style="top: 95%; left: 95%; font-size: 26px;">sin</div>
+        <div class="symbol" style="top: 5%; left: 5%; font-size: 24px;">cos</div>
+        <div class="symbol" style="top: 90%; left: 50%; font-size: 28px;">tan</div>
+    </div>
+
+    <header>
+        <div class="container">
+            <h1>Mihai-Emilian Niculae</h1>
+            <nav>
+                <ul>
+                    <li><a href="#intro" class="nav-link">Home</a></li>
+                    <li><a href="#about" class="nav-link">About Me</a></li>
+                    <li><a href="#education" class="nav-link">Education</a></li>
+                    <li><a href="#experience" class="nav-link">Experience</a></li>
+                    <li><a href="#skills" class="nav-link">Skills</a></li>
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="intro" class="content-section active">
+            <div class="container">
+                <!-- Rotating Infinity Symbol -->
+                <div class="infinity-container">
+                    <div class="infinity">
+                        <div class="loop left"></div>
+                        <div class="loop right"></div>
+                    </div>
+                </div>
+
+                <h2>Truth, Beauty and Equations</h2>
+            </div>
+        </section>
+
+        <section id="about" class="content-section">
+            <div class="container">
+                <h2>About Me</h2>
+                <p>In the small village of Blejoi, nestled in a quiet part of Romania, my journey began. From a young age, I was captivated by the intricate workings of the world around me—a curiosity that sparked a lifelong passion for learning. Little did I know that this passion would lead me on a remarkable path towards educational leadership, shaped by pivotal experiences and transformative moments that would define my future.</p>
+                <p>One of my most cherished childhood memories is a trip to London with my two older sisters. As we navigated the bustling streets adorned with sparkling lights, I was swept away by the city’s vibrant energy and rich tapestry of history. It was during this visit that I unknowingly laid the groundwork for my future home. The winding streets and iconic landmarks ignited a passion for exploration and discovery, planting seeds of ambition that would flourish in the years to come. London's dynamic spirit and cultural diversity made a lasting impression on me, shaping my dreams and aspirations.</p>
+                <p>The autumn of 2017 marked a significant turning point in my life. Inspired by my English language teacher, I decided to run for president of the student body at my local school. Winning this election was more than a personal achievement; it opened a gateway to new opportunities. In this role, I led initiatives that intertwined environmental stewardship with sports, fostering both physical health and a collective environmental consciousness among my peers. Our efforts culminated in vibrant festivals, from Romanian National Day to the Festival of International Education in Ploiești, each event a testament to our community's spirit and academic excellence.</p>
+                <p>The following year brought another exciting chapter as I was elected Mayor through the innovative "Local Council of Children" project. This role expanded my responsibilities, allowing me to lead a delegation of students to the Romanian parliament, where we engaged with senators and gained invaluable insights into the machinery of democracy. This experience deepened my understanding of civic responsibility and the power of young voices to shape the future. None of this would have been possible without the support of my Romanian teachers, who played a pivotal part in my development as a young person.</p>
+                <p>At that time, my aspirations leaned towards a career in politics, driven by a desire to make meaningful changes in society. However, life had other plans for me. In September 2018, I relocated to Northampton to attend Abbeyfield School, stepping into a new world of academic possibilities. The transition to an English-speaking environment was daunting, with its linguistic nuances and unfamiliar educational framework. Yet, the resilience I had cultivated through my leadership roles in Romania equipped me to embrace these challenges with determination and enthusiasm.</p>
+                <p>From my first day in the British school system, I was fortunate to be welcomed by the school’s friendly EAL coordinator. Her kindness played a crucial role in my adjustment, offering friendship and guidance that I cherish to this day. We spent countless hours discussing topics ranging from politics to science and even music, enriching my experience and easing my transition. Her support was instrumental in helping me adapt to my new surroundings and fully engage with the curriculum.</p>
+                <p>My first class in the British education system was a mathematics class. At that time, maths was one of my biggest fears, and like many teenagers, I dreaded it. However, as I stepped into the classroom, my perception began to change. My mathematics teacher welcomed us with the song “September” by Earth, Wind & Fire playing in the background, her vibrant smile instantly making the room feel warm and inviting. She moved me between classes to test my level, and by the end of secondary school, I had studied under four different teachers, each of whom played an important role in changing my views towards maths.</p>
+                <p>This newfound passion for mathematics led me to establish a peer tutoring programme, helping other international students bridge cultural and educational gaps. As my high school years progressed, my focus shifted from politics to mathematics, a transformation that felt as natural as the changing seasons. Although I faced a setback when I couldn't enrol in the further mathematics class due to space constraints, I was undeterred. I took it upon myself to study Further Mathematics independently and enrolled at a neighbouring school to broaden my analytical skills.</p>
+                <p>During my high school years, I studied English Literature, psychology, mathematics, further mathematics, and computer science, each subject broadening my understanding of the world. I treasured my time in high school as my love for mathematics flourished. I had the opportunity to learn different aspects of pure mathematics, mechanics, and statistics from multiple teachers, each bringing unique insights to the subject. Statistics, however, was not my favourite at the time, and my statistics teacher was well aware of this. I was constantly asking questions, often pestering him during break times—I’m sure he was relieved when I finally finished high school! Ironically, despite my initial reluctance, I am now about to specialise in statistics and data. I even wrote a revision guide for mathematics as one of my final extended projects. This period of self-directed learning and exploration was pivotal, laying the foundation for my future academic pursuits.</p>
+                <p>During this time, I immersed myself in the rich literature of mathematics, discovering that it was not just about numbers but about understanding life’s very foundation. I realised that mathematics is woven into the fabric of everything, from the structure of narratives in English literature to the statistical methods used in psychology. This exploration extended beyond the classroom, as I engaged in practical applications during UCL Science Week and as a delegate in the European Youth Parliament. Whether discussing the critical role of bees in our ecosystem or the precision required in space engineering, each experience underscored the pervasive influence of mathematics.</p>
+                <p>Towards the end of high school, I found myself drafting my personal statement for a mathematics degree, a testament to my journey and passion. My class tutor praised my first draft as perfect for university submission, a validation of the path I had chosen. Choosing a university was a challenging and competitive process, but ultimately, I was captivated by the University of Greenwich. Its stunning architecture, deeply rooted in mathematical principles, and the lecturers’ passion for the subject resonated with me. Everything felt perfect—the campus’s design, the expert-led lectures, and the vibrant community convinced me that Greenwich was the ideal place for my academic and personal growth.</p>
+                <p>During my first year at university, I covered modules in Vectors and Matrices, Mathematical Coding, Calculus and Mathematical Analysis, Discrete Mathematics, Analysis of Data, and Probability and Randomness. I spent countless hours in the university library, delving deeper into the depths of each module. My favourite modules were Vectors and Matrices, where I learned to use them to project movies and understand financial markets, and Analysis of Data, which showed me how powerful data is in our world and how it acts as a dialect of mathematics. This rigorous academic environment fostered my love for mathematics and nurtured my intellectual curiosity.</p>
+                <p>During this time, I also started to tutor and, by the end of my second year, had managed to tutor over 250 students in mathematics and sciences, from primary school to adult learners. This experience was incredibly rewarding and allowed me to develop my teaching skills and share my passion for mathematics with others.</p>
+                <p>I revived the mathematics society as its president, organising workshops to bridge the gaps between high school and university. We hosted magic workshops and movie nights to make learning fun and engaging. These initiatives not only enriched the university experience for many students but also fostered a sense of community and collaboration among our peers.</p>
+                <p>In my second year, I deepened my understanding of data and statistics, knowing this would be my focus for the final year. I also became a private examiner for both private and public schools, marking thousands of papers and analysing trends in grades based on question difficulties. This role allowed me to gain valuable insights into analysing data and develop a keen understanding of assessment practices.</p>
+                <p>Towards the end of my second year, I passed the presidency of the mathematics society to new students and hosted the first-ever mathematics summit with all London universities—a collaborative effort that marked a new chapter in the society’s history. This summit brought together students and academics from across the city, fostering connections and sparking innovative discussions on the future of mathematics.</p>
+                <p>Currently, in my third year, I am studying modules in Actuarial Mathematics and Risk Modelling, Mathematics for the Life Sciences, Machine Learning, Modelling and Analysis of Financial Instruments, Financial Time Series, and Linear Models and Statistical Inference. These subjects are equipping me with the skills and knowledge to navigate the complexities of the modern world. The diverse curriculum has broadened my perspective and prepared me for the challenges of the professional realm.</p>
+                <p>Reflecting on my journey from the small village of Blejoi to the vibrant city of London, I see a tapestry woven with experiences, challenges, and revelations. It is a story of transformation, fuelled by a love for learning and a deepening appreciation for mathematics. Through it all, I've learned that life can change in the most unexpected ways, guiding us towards paths we never imagined, filled with opportunities to discover new passions and redefine our destinies. Now, as I stand on the brink of graduation with a degree in mathematics, I am ready to leap into the world beyond academia. Stay tuned for the next chapter of my adventure—where numbers continue to tell stories, and every equation holds the promise of discovery.</p>
+
+                <h2>Current Favourite Songs</h2>
+                <ul class="song-list">
+                    <li>
+                        American Requiem - Beyoncé
+                        <a href="https://www.youtube.com/watch?v=nbcCG7PkI18" target="_blank">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </li>
+                    <li>
+                        Chiquitita - ABBA
+                        <a href="https://www.youtube.com/watch?v=p56t3fAD2Fc" target="_blank">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </li>
+                    <li>
+                        Savage - Megan Thee Stallion
+                        <a href="https://www.youtube.com/watch?v=JFSO7Ez6Q6c" target="_blank">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </li>
+                    <li>
+                        Red Potion - Rema
+                        <a href="https://www.youtube.com/watch?v=K8utci9pvZ8" target="_blank">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="education" class="content-section">
+            <div class="container">
+                <h2>Education</h2>
+                <ul>
+                    <li><strong>BSc (Hons) Mathematics, Greenwich University, UK</strong><br>
+                        Specialized in Statistics, Artificial Intelligence, Financial Analysis, Data Modelling, Software Programming, and Life Sciences.</li>
+                    <li><strong>Certificate of A Levels, Abbeyfield School, UK</strong><br>
+                        Studied Mathematics, English Literature, and Psychology.</li>
+                    <li><strong>Certificate of A Levels, Bosworth Independent College, UK</strong><br>
+                        Studied Computer Science and Further Mathematics.</li>
+                    <li><strong>High School Diploma, Radu Tudoran School, Romania</strong><br>
+                        Graduated with honours, actively participating in extracurricular activities including local and national student political campaigns.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="experience" class="content-section">
+            <div class="container">
+                <h2>Experience</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">2021 - Present</div>
+                        <div class="timeline-content">
+                            <h3>GCSE and A Level Examiner, London</h3>
+                            <p>Served as an examiner for AQA and PEARSON: GCSE, AS, and A Level examinations. Conducted intricate result analysis using advanced data software, including R, Tableau, Jupyter Notebook, and Excel. Developed detailed reports on student performance, identifying key areas for improvement. Coordinated with other examiners to ensure consistent and accurate grading standards. Implemented new methods for efficient and accurate assessment.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2019 - 2024</div>
+                        <div class="timeline-content">
+                            <h3>Mathematics, Science, Statistics, Computer Science and Engineering Tutor, UK</h3>
+                            <p>Mentored and empowered students in Mathematics, Science, Finance, Accounting, Economics, Computer Science, and Engineering. Developed and implemented customized learning plans to address individual student needs. Utilized various teaching methodologies to enhance student engagement and understanding. Provided regular feedback to students and parents to track progress and set future learning goals. Created interactive and engaging educational materials to support student learning.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">Feb 2023 - May 2023</div>
+                        <div class="timeline-content">
+                            <h3>Screening and Compliance Administrator, Milton Keynes</h3>
+                            <p>Led and supervised administrative personnel, ensuring strict compliance with industry regulations. Demonstrated expertise in industry-specific software for precise word processing and data analysis. Conducted regular audits to ensure compliance with company policies and procedures. Managed and resolved compliance issues promptly and effectively.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2019</div>
+                        <div class="timeline-content">
+                            <h3>Science Week Project Member, London</h3>
+                            <p>Spearheaded the compilation, evaluation, and visualization of NASA & ESA data. Developed highly maintainable, robust code in Python, Java, and C++ for cutting-edge software systems. Collaborated with a multidisciplinary team to design and implement scientific experiments. Presented findings to senior researchers and contributed to scientific publications. Utilized advanced data processing techniques to handle large datasets.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2018 - 2019</div>
+                        <div class="timeline-content">
+                            <h3>European Youth Delegate, Brussels</h3>
+                            <p>Proposed a motion on potential food insecurity due to pollinator decline. Acquired and analyzed field data from Member States. Participated in policy discussions and contributed to the development of environmental legislation. Represented the views of young people at international conferences and workshops. Engaged in public speaking and advocacy on environmental issues.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2018 - 2020</div>
+                        <div class="timeline-content">
+                            <h3>Customer Advisor Volunteer, Northampton, UK</h3>
+                            <p>Addressed customer inquiries and resolved issues professionally and empathetically. Directed inbound calls to designated individuals or departments. Assisted in the organization and execution of public events and exhibitions. Provided guided tours and educational talks to visitors. Developed promotional materials to enhance visitor experience.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills" class="content-section">
+            <div class="container">
+                <h2>Skills</h2>
+                <ul>
+                    <li><i class="fas fa-chart-line"></i> <strong>Quantitative Analysis:</strong>
+                        I possess deep expertise in quantitative analysis, leveraging advanced mathematical frameworks and statistical techniques to derive actionable insights from complex datasets. My analytical acumen is rooted in a comprehensive understanding of calculus, linear algebra, and probability theory, which I apply to perform rigorous data evaluations. I have consistently driven strategic decision-making by translating intricate numerical data into clear, impactful recommendations that align with organizational goals and objectives.
+                    </li>
+                    <li><i class="fas fa-cogs"></i> <strong>Statistical Modeling:</strong>
+                        My proficiency in statistical modeling encompasses the design and implementation of sophisticated models tailored to address specific business challenges. I am adept at utilizing a variety of statistical methods, including generalized linear models, Bayesian inference, and multivariate analysis, to predict outcomes and optimize decision-making processes. My work is characterized by the meticulous calibration of models to ensure robustness, accuracy, and relevance in dynamic environments.
+                    </li>
+                    <li><i class="fas fa-chart-pie"></i> <strong>Data Analysis & Visualization:</strong>
+                        I specialize in the synthesis of large-scale data through advanced tools such as Python, R, MATLAB, Tableau, and Excel, transforming raw information into actionable insights. My approach to data analysis is both methodical and innovative, ensuring that complex data sets are not only processed efficiently but also visualized in a manner that enhances interpretability and supports data-driven decision-making. My visualizations are crafted to communicate nuanced trends and relationships, empowering stakeholders with clear, evidence-based insights.
+                    </li>
+                    <li><i class="fas fa-calculator"></i> <strong>Mathematical Modeling:</strong>
+                        My work in mathematical modeling is centered on developing and refining models that capture the complexities of real-world systems. Whether addressing optimization problems, forecasting trends, or conducting scenario analysis, I employ a rigorous approach grounded in applied mathematics and computational techniques. My models are designed to be both predictive and prescriptive, providing a robust framework for understanding and influencing complex systems.
+                    </li>
+                    <li><i class="fas fa-code"></i> <strong>Programming:</strong>
+                        With a strong command of programming languages including Python, R, MATLAB, Java, and C++, I bring technical excellence to the development and implementation of algorithms, data processing pipelines, and custom software solutions. My programming skills are integral to my ability to automate complex processes, perform high-dimensional data analysis, and develop scalable applications that are both efficient and reliable. My code is characterized by its clarity, efficiency, and adherence to best practices in software engineering.
+                    </li>
+                    <li><i class="fas fa-chart-bar"></i> <strong>Financial Mathematics:</strong>
+                        In the realm of financial mathematics, I apply advanced quantitative techniques to model and assess financial risks, optimize investment portfolios, and evaluate derivative instruments. My expertise includes stochastic calculus, quantitative risk management, and the application of partial differential equations in pricing models. I provide quantitative support for financial decision-making, offering insights that enhance portfolio performance and mitigate risk in volatile markets.
+                    </li>
+                    <li><i class="fas fa-lightbulb"></i> <strong>Problem-Solving:</strong>
+                        I excel in solving complex, multi-faceted problems through a combination of logical reasoning, mathematical rigor, and creative thinking. My approach is systematic, leveraging a deep understanding of theoretical and applied mathematics to deconstruct problems, identify underlying patterns, and develop innovative solutions. I thrive in environments where challenges require not only technical expertise but also strategic foresight and interdisciplinary collaboration.
+                    </li>
+                    <li><i class="fas fa-robot"></i> <strong>Machine Learning:</strong>
+                        My experience with machine learning spans a wide array of techniques, including supervised and unsupervised learning, neural networks, and reinforcement learning. I integrate these methodologies into data-driven projects to build predictive models, automate decision-making processes, and discover latent patterns within data. My work in this area is characterized by a strong emphasis on model interpretability, scalability, and performance optimization, ensuring that the machine learning solutions I develop are both effective and aligned with business objectives.
+                    </li>
+                    <li><i class="fas fa-database"></i> <strong>Database Management:</strong>
+                        I bring extensive experience in managing and optimizing both relational (SQL) and non-relational (NoSQL) databases. My expertise covers the full spectrum of database management tasks, from schema design and query optimization to data migration and real-time analytics. I ensure data integrity, security, and availability while enabling efficient data retrieval and processing, supporting large-scale data operations and facilitating seamless data-driven workflows.
+                    </li>
+                    <li><i class="fas fa-laptop-code"></i> <strong>Software Development:</strong>
+                        With a background in full-stack software development, I possess the technical expertise to design, develop, and deploy scalable software solutions that meet complex business requirements. My work is guided by principles of software engineering, including modularity, scalability, and maintainability, with a focus on delivering high-performance applications. My proficiency in both front-end and back-end development, combined with a strong foundation in mathematical modeling and data analytics, allows me to create software that is not only functionally robust but also optimized for performance and user experience.
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="projects" class="content-section">
+            <div class="container">
+                <h2>Projects</h2>
+                <ul>
+                    <li><strong>Stock Market Prediction Model:</strong> Developed a predictive model for stock market trends using Python and R, incorporating machine learning algorithms such as linear regression and neural networks to improve prediction accuracy.</li>
+                    <li><strong>Data Analysis Project:</strong> Analyzed large datasets from various industries using MATLAB and Python, and created interactive dashboards in Tableau for dynamic data exploration and analysis.</li>
+                    <li><strong>Financial Risk Assessment Tool:</strong> Designed a tool to assess financial risk for investment portfolios, using quantitative risk models and integrated with financial databases for real-time data retrieval.</li>
+                    <li><strong>Algorithm Design and Software Development Project:</strong> Developed efficient algorithms for data sorting and searching, and implemented software solutions using Java and C++ for computational problems.</li>
+                </ul>
+            </div>
+        </section>
+
+        <section id="contact" class="content-section">
+            <div class="container">
+                <h2>Contact</h2>
+                <div class="contact-icons">
+                    <a href="mailto:Niculaemihai1322@gmail.com"><i class="fas fa-envelope"></i></a>
+                    <a href="https://www.linkedin.com/in/mihai-emilian-niculae-10a106236/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Mihai-Emilian Niculae</p>
+        </div>
+    </footer>
+
+    <script>
+        let currentSection = document.querySelector('.content-section.active');
+
+        // Smooth transition effect
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetSectionId = this.getAttribute('href').substring(1);
+                const targetSection = document.getElementById(targetSectionId);
+
+                if (currentSection !== targetSection) {
+                    // Swipe out the current section
+                    currentSection.classList.remove('active');
+                    currentSection.classList.add('swipe-left');
+
+                    setTimeout(() => {
+                        currentSection.style.display = 'none';
+                        currentSection.classList.remove('swipe-left');
+
+                        // Swipe in the new section
+                        targetSection.style.display = 'block';
+                        targetSection.classList.add('active', 'swipe-right');
+
+                        setTimeout(() => {
+                            targetSection.classList.remove('swipe-right');
+                            currentSection = targetSection;
+                        }, 800);
+                    }, 800);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
