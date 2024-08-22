@@ -400,6 +400,64 @@
         .contact-icons a:hover:before {
             opacity: 1;
         }
+
+        .travel-section {
+            padding: 100px 0;
+            position: relative;
+            background-color: #1A1A1A;
+        }
+
+        .map-container {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 0;
+        }
+
+        .map {
+            width: 100%;
+            height: 500px;
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Mercator_projection_Square.JPG/1200px-Mercator_projection_Square.JPG');
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .pin {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #FF0000;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 10px rgba(255, 0, 0, 0.8);
+        }
+
+        .pin:hover .tooltip {
+            display: block;
+        }
+
+        .tooltip {
+            position: absolute;
+            background-color: #1A1A1A;
+            color: #FFFFFF;
+            padding: 5px 10px;
+            border-radius: 4px;
+            display: none;
+            font-size: 0.9em;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            white-space: nowrap;
+        }
+
+        @media screen and (max-width: 768px) {
+            .map {
+                height: 300px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -439,6 +497,7 @@
                     <li><a href="#skills" class="nav-link">Skills</a></li>
                     <li><a href="#projects" class="nav-link">Projects</a></li>
                     <li><a href="#contact" class="nav-link">Contact</a></li>
+                    <li><a href="#travel" class="nav-link">Travel</a></li>
                 </ul>
             </nav>
         </div>
@@ -485,7 +544,7 @@
                 <ul class="song-list">
                     <li>
                         American Requiem - Beyoncé
-                        <a href="https://www.youtube.com/watch?v=nbcCG7PkI18" target="_blank">
+                        <a href="https://youtu.be/m62TnrX0XtU?si=z5_Nm-r2wPGCwGfJ" target="_blank">
                             <i class="fab fa-youtube"></i>
                         </a>
                     </li>
@@ -504,6 +563,24 @@
                     <li>
                         Red Potion - Rema
                         <a href="https://www.youtube.com/watch?v=K8utci9pvZ8" target="_blank">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </li>
+                    <li>
+                        Blue Lights - Jorja Smith
+                        <a href="https://youtu.be/R8YwnQMQuJI?si=SS7VDmnVaw102if4" target="_blank">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </li>
+                    <li>
+                        School Days - Aretha Franklin
+                        <a href="https://youtu.be/He80UdejMqw?si=p_JYnToDN_VvyfUW" target="_blank">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </li>
+                    <li>
+                        September - Earth, Wind & Fire
+                        <a href="https://www.youtube.com/watch?v=Gs069dndIYk" target="_blank">
                             <i class="fab fa-youtube"></i>
                         </a>
                     </li>
@@ -624,6 +701,37 @@
                     <li><strong>Financial Risk Assessment Tool:</strong> Designed a tool to assess financial risk for investment portfolios, using quantitative risk models and integrated with financial databases for real-time data retrieval.</li>
                     <li><strong>Algorithm Design and Software Development Project:</strong> Developed efficient algorithms for data sorting and searching, and implemented software solutions using Java and C++ for computational problems.</li>
                 </ul>
+            </div>
+        </section>
+
+        <section id="travel" class="content-section travel-section">
+            <div class="container">
+                <h2>Places I've Traveled</h2>
+                <div class="map-container">
+                    <div class="map">
+                        <div class="pin" style="top: 36%; left: 28%;">
+                            <div class="tooltip">Houston, USA</div>
+                        </div>
+                        <div class="pin" style="top: 34%; left: 22%;">
+                            <div class="tooltip">Los Angeles, USA</div>
+                        </div>
+                        <div class="pin" style="top: 32%; left: 24%;">
+                            <div class="tooltip">New York, USA</div>
+                        </div>
+                        <div class="pin" style="top: 37%; left: 51%;">
+                            <div class="tooltip">London, UK</div>
+                        </div>
+                        <div class="pin" style="top: 41%; left: 55%;">
+                            <div class="tooltip">Paris, France</div>
+                        </div>
+                        <div class="pin" style="top: 52%; left: 83%;">
+                            <div class="tooltip">Beijing, China</div>
+                        </div>
+                        <div class="pin" style="top: 51%; left: 85%;">
+                            <div class="tooltip">Shanghai, China</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
